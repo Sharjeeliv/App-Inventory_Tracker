@@ -9,14 +9,14 @@
         <div class="row">
 
             <!-- Static Side Bar -->
-            <nav class="nav flex-column col-sm-2 left-justified vh-100" id="sidebar">
-                <a class="nav-link active text-center" href="#">Active</a>
-                <a class="nav-link" href="#">Link</a>
-                <a class="nav-link" href="#">Link</a>
+            <nav class="nav flex-column col-sm-2 left-justified vh-100 sidebar">
+                <a class="nav-link text-center sidebar-element" href="#">Active</a>
+                <a class="nav-link text-center sidebar-element" href="#">Link</a>
+                <a class="nav-link text-center sidebar-element" href="#">Link</a>
             </nav>
 
             <!-- Dynamic Content -->
-            <div class="col">
+            <div class="col-md-8">
                 {% block body %}{% endblock %}
             </div>
         </div>
