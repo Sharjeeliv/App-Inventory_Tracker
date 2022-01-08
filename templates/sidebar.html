@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+<!-- In the head of the HTML file-->
+{% block title %} Test {% endblock %}
+
+<!-- In the body of the HTML file-->
+{% block content %}
+    <div class="container-fluid left-justified">
+        <div class="row">
+
+            <!-- Static Side Bar -->
+            <nav class="nav flex-column col-sm-2 left-justified vh-100" id="sidebar">
+                <a class="nav-link active text-center" href="#">Active</a>
+                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Link</a>
+            </nav>
+
+            <!-- Dynamic Content -->
+            <div class="col">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

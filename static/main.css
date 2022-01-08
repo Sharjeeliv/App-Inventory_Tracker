@@ -1,0 +1,33 @@
+body {
+  background: #fffbef;
+  color: #333333;
+}
+
+.left-justified{
+  padding-left: 0;
+}
+
+#sidebar {
+  height: 100%;
+  background: #F0E7D0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+.bg-leaf {
+  background-color: #95BF47;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #c4b782;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #d2b576;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
