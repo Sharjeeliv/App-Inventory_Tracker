@@ -12,12 +12,12 @@ db = SQLAlchemy(app)
 
 
 class Items(db.Model):
-    id = db.column(db.Integer, primary_key=True)  # This is primary key aka unique id
-    quantity = db.column(db.Integer, nullable=False)  # This is primary key aka unique id
-    name = db.column(db.String(20), nullable=False)  # max length is 20 and we need one so cant be null
-    manufacturer = db.column(db.String(40), nullable=False)  # max length is 40 and we need one so cant be null
-    summary = db.column(db.String(500), nullable=False)  # max length is 40 and we need one so cant be null
-    image_file = db.column(db.String(40), nullable=False, default='default.jpg')
+    id = db.Column(db.Integer, primary_key=True)  # This is primary key aka unique id
+    quantity = db.Column(db.Integer, nullable=False)  # This is primary key aka unique id
+    name = db.Column(db.String(20), nullable=False)  # max length is 20 and we need one so cant be null
+    manufacturer = db.Column(db.String(40), nullable=False)  # max length is 40 and we need one so cant be null
+    summary = db.Column(db.String(500), nullable=False)  # max length is 40 and we need one so cant be null
+    image_file = db.Column(db.String(40), nullable=False, default='default.jpg')
 
     def __repr__(self):
         return f"Item('{self.manufacturer}', '{self.name}', '{self.quantity}', '{self.image_file}')"
