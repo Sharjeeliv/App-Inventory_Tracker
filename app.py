@@ -6,6 +6,7 @@ app = Flask(__name__)  # Created app
 app.register_blueprint(routes)
 app.config['SECRET_KEY'] = '6ba12202b0c980a1c3d10b3c03482569'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///inventory.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
