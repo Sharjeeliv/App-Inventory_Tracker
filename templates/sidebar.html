@@ -5,20 +5,19 @@
 
 <!-- In the body of the HTML file-->
 {% block content %}
-    <div class="container-fluid left-justified">
-        <div class="row">
+    <div class="row">
 
-            <!-- Static Side Bar -->
-            <nav class="nav flex-column col-sm-2 left-justified vh-100 sidebar">
-                <a class="nav-link text-center sidebar-element" href="#">Active</a>
-                <a class="nav-link text-center sidebar-element" href="#">Link</a>
-                <a class="nav-link text-center sidebar-element" href="#">Link</a>
-            </nav>
+        <!-- Static Side Bar -->
+        <nav class="nav flex-column col-sm-2 left-justified vh-100 sidebar">
+            <a class="nav-link text-center sidebar-element" href="{{ url_for('routes.new_item') }}">New Item</a>
+            <a class="nav-link text-center sidebar-element" href="#">Link</a>
+            <a class="nav-link text-center sidebar-element" href="#">Link</a>
+            <p class="nav-link text-left sidebar-paragraph">Est ferox fluctus, cesaris.Castors sunt aonidess de azureus lanista.</p>
+        </nav>
 
-            <!-- Dynamic Content -->
-            <div class="col-md-8">
-                {% block body %}{% endblock %}
-            </div>
+        <!-- Dynamic Content -->
+        <div class="col-md-8">
+            {% block body %}{% endblock %}
         </div>
     </div>
 {% endblock %}

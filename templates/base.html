@@ -20,23 +20,44 @@
 <!-- Navigation Bar Section -->
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-leaf">
-        <a class="navbar-brand" href="#">Shopify Coding Challenge</a>
+        <p style="margin: 0" class="navbar-brand" href="#">Shopify Coding Challenge &nbsp</p>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Features</a>
-                <a class="nav-item nav-link" href="https://github.com/Sharjeeliv/Challenge-Shopify" target="_blank">GitHub</a>
+                <a class="nav-item nav-link"
+                   href="{{ url_for('routes.home') }}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link"
+                   href="https://docs.google.com/document/d/1z9LZ_kZBUbg-O2MhZVVSqTmvDko5IJWHtuFmIu_Xg1A/edit"
+                   target="_blank">Backend Question</a>
+                <a class="nav-item nav-link"
+                   href="https://docs.google.com/document/d/1wir0XQuviR6p-uNEUPzsGvMFwqgMsY8sEjGUx74lNrg/edit"
+                   target="_blank">Infrastructure Question</a>
+                <a class="nav-item nav-link"
+                   href="https://github.com/Sharjeeliv/Challenge-Shopify" target="_blank">GitHub</a>
+                <a class="nav-item nav-link"
+                   href="https://www.linkedin.com/in/sharjeeliv/" target="_blank">LinkedIn</a>
             </div>
         </div>
     </nav>
 </header>
 
 <!-- Main Body Section-->
-{% block content %}{% endblock %}
+<div style="padding-right: 0" class="container-fluid left-justified">
+    {% with messages=get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div style="margin-bottom: 0; margin-right: 0;"
+                     class="alert alert-{{ category }}"> {{ message }} </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
