@@ -1,25 +1,15 @@
 from flask import Blueprint, render_template, flash, redirect, url_for
 from forms import NewItemForm, UpdateItemForm
+from models import Items
+from app import db
 
 routes = Blueprint("routes", __name__)
-
-inventory = [
-    {'name': 'Iphone',
-     'manufacturer': 'Apple',
-     'quantity': '100',
-     'summary': 'This is a high tech device'
-     },
-    {'name': 'Pizza',
-     'manufacturer': 'PizzaHut',
-     'quantity': '50',
-     'summary': 'This is very yummy'
-     }
-]
 
 
 @routes.route('/')
 @routes.route('/home')
 def home():
+    inventory = Items.query.all()
     return render_template('homepage.html', inventory=inventory)
 
 
@@ -27,6 +17,10 @@ def home():
 def new_item():
     form = NewItemForm()
     if form.validate_on_submit():
+        item = Items(name=form.name.data, manufacturer=form.manufacturer.data, quantity=form.quantity.data,
+                     summary=form.summary.data)
+        db.session.add(item)
+        db.session.commit()
         flash(f'Item entry for {form.name.data} created!', 'success')
         return redirect(url_for('routes.home'))
     return render_template('newitem.html', form=form)

@@ -4,29 +4,30 @@
 {% block title %} Home {% endblock %}
 
 {% block body %}
-    {% if not inventory %}
-        <article class="article-section">
-            <div class="article-content">
-                <p>No items in inventory</p>
-            </div>
-        </article>
-
-    {% else %}
-        {% for item in inventory %}
-
+    <div style="overflow: hidden;" class="container-fluid">
+        {% if not inventory %}
             <article class="article-section">
-                <figure class="article-image">
-                    <img src="/static/item_images/default.jpg" alt="This is an image">
-                </figure>
                 <div class="article-content">
-                    <h2><a class="article-title" href="#">{{ item.name }}</a></h2>
-                    <p class="article-metadata">Manufacturer: {{ item.manufacturer }}</p>
-                    <p class="article-metadata">Quantity: {{ item.quantity }}</p>
-                    <p class="article-text">Summary: {{ item.summary }}</p>
+                    <p>No items in inventory</p>
                 </div>
             </article>
 
+        {% else %}
+            {% for item in inventory %}
 
-        {% endfor %}
-    {% endif %}
+                <article class="article-section">
+                    <figure class="article-image">
+                        <img src="{{ url_for( 'static', filename = 'item_images/' + item.image) }}"
+                             alt="This is an image">
+                    </figure>
+                    <div class="article-content">
+                        <h2><a class="article-title" href="#">{{ item.name }}</a></h2>
+                        <p class="article-metadata">Manufacturer: {{ item.manufacturer }}</p>
+                        <p class="article-metadata">Quantity: {{ item.quantity }}</p>
+                        <p class="article-text">Summary: {{ item.summary }}</p>
+                    </div>
+                </article>
+            {% endfor %}
+        {% endif %}
+    </div>
 {% endblock %}
