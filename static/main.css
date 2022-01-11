@@ -89,15 +89,15 @@ a.article-title:hover {
 .form-section{
     display: flex;
     background: #F0E7D0;
-    margin: 30px;
+    margin: 30px 20px 30px 30px;
     padding: 30px;
     border-radius: 20px;
 }
 
 .form-content{
     width: 100%;
-    margin-left: 10px;
-    padding-left: 50px;
+    margin-left: 30px;
+    padding-left: 10px;
 }
 
 .form-image img {
@@ -105,21 +105,20 @@ a.article-title:hover {
     width: 480px;
     height: 480px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
-/*
-.form-group{
-    display: flex;
+.form-button {
+    width: 225px;
+    text-align: center;
+    float:left;
+    padding: 10px 30px;
+    border-radius: 15px;
+    margin: 30px 30px 20px 0;
+    background-color: #989385;
+    color: #444444;
 }
 
-.form-control-label{
-    page-break-after: right;
-    width: 100px;
-    float: left;
+.form-button:hover {
+    background-color: #797568;
 }
-
-.form-control{
-    float:right;
-}
-
- */

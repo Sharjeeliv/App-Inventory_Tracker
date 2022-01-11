@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+<!-- In the head of the HTML file-->
+{% block title %} New Item Form {% endblock %}
+
+{% block content %}
+    <div class="form-section">
+        <div>
+            <figure class="form-image">
+                <img src="/static/item_images/default.jpg" alt="This is an image">
+            </figure>
+            <a class="form-button" href=""> Delete </a>
+            <a class="form-button" href="{{ url_for('routes.update_item', item_id=item.id) }}"> Update </a>
+        </div>
+        <div>
+            <h2 class="form-content">{{ item.name }}</h2>
+            <p class="form-content">Manufacturer: {{ item.manufacturer }}</p>
+            <p class="form-content">Quantity: {{ item.quantity }}</p>
+            <p class="form-content">Summary: {{ item.summary }}</p>
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -14,7 +14,7 @@
         <form class="form-content" method="POST" action="" >
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4"> New Item Entry</legend>
+                <legend class="border-bottom mb-4">{{ legend }}</legend>
                 <div class="form-group">
                     {{ form.name.label(class="form-control-label") }}
                      {{ form.name(class="form-control form-control-lg") }}
@@ -34,7 +34,7 @@
             </fieldset>
 
             <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+                {{ form.submit(class="form-button") }}
             </div>
 
         </form>

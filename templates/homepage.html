@@ -21,7 +21,7 @@
                              alt="This is an image">
                     </figure>
                     <div class="article-content">
-                        <h2><a class="article-title" href="{{ url_for('routes.update_item', item_id=item.id) }}">{{ item.name }}</a></h2>
+                        <h2><a class="article-title" href="{{ url_for('routes.view_item', item_id=item.id) }}">{{ item.name }}</a></h2>
                         <p class="article-metadata">Manufacturer: {{ item.manufacturer }}</p>
                         <p class="article-metadata">Quantity: {{ item.quantity }}</p>
                         <p class="article-text">Summary: {{ item.summary }}</p>
