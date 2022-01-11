@@ -22,6 +22,12 @@ def new_item():
     if form.validate_on_submit():
         item = Items(name=form.name.data, manufacturer=form.manufacturer.data, quantity=form.quantity.data,
                      summary=form.summary.data)
+
+        if form.image.data:
+            picture_file = save_image(form.image.data)
+            image = picture_file
+            item.image = image
+
         db.session.add(item)
         db.session.commit()
         flash(f'Item entry for {form.name.data} created!', 'success')
@@ -36,17 +42,24 @@ def view_item(item_id):
     return render_template('item_view.html', item=item, legend='Update Item Form', image=image)
 
 
-def save_image(picture_form): # we make a random hex study this method
+def save_image(picture_form):  # we make a random hex study this method
     random_hex = secrets.token_hex(8)
     _, ext = os.path.splitext(picture_form.filename)
     image_fn = random_hex + ext
-    picture_path = os.path.join(current_app.root_path, 'static/item_images',image_fn)
+    picture_path = os.path.join(current_app.root_path, 'static/item_images', image_fn)
     # resize
     output_size = (480, 480)
     i = Image.open(picture_form)
     i.thumbnail(output_size)
     i.save(picture_path)
     return image_fn
+
+
+def delete_image(current):
+    if current != 'default.jpg':
+        picture_path = os.path.join(current_app.root_path, 'static/item_images', current)
+        os.remove(picture_path)
+
 
 @routes.route('/update/<int:item_id>', methods=['GET', 'POST'])
 def update_item(item_id):
@@ -56,6 +69,7 @@ def update_item(item_id):
 
     if form.validate_on_submit():
         if form.image.data:
+            delete_image(item.image)
             picture_file = save_image(form.image.data)
             item.image = picture_file
 
