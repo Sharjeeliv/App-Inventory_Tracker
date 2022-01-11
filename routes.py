@@ -26,7 +26,7 @@ def new_item():
     return render_template('newitem.html', form=form)
 
 
-@routes.route('/update-item')
-def update_item():
-    form = UpdateItemForm()
-    return render_template('update-item.html', form=form)
+@routes.route('/update_item/<int:item_id>')
+def update_item(item_id):
+    item = Items.query.get_or_404(item_id) # Get post with this id or get 404 meaning page does not exist
+    return render_template('item.html', item=item)

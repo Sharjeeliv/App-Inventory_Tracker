@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+<!-- In the head of the HTML file-->
+{% block title %} New Item Form {% endblock %}
+
+{% block content %}
+    <div class="form-section">
+        <div>
+            <figure class="form-image">
+                <img src="/static/item_images/default.jpg" alt="This is an image">
+            </figure>
+        </div>
+        <div>
+            <h2>{{ item.name }}</h2>
+            <p class="article-metadata">Manufacturer: {{ item.manufacturer }}</p>
+            <p class="article-metadata">Quantity: {{ item.quantity }}</p>
+            <p class="article-text">Summary: {{ item.summary }}</p>
+        </div>
+    </div>
+
+{% endblock %}
