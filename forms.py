@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileAllowed, FileField
 from wtforms import StringField, IntegerField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Length
 
@@ -11,4 +12,5 @@ class ItemForm(FlaskForm):
     manufacturer = StringField('Manufacturer', validators=[DataRequired()])
     quantity = IntegerField('Quantity', validators=[DataRequired()])
     summary = StringField('Summary', validators=[DataRequired()])
+    image = FileField('Picture', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
     submit = SubmitField("Submit")
