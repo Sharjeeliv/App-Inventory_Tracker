@@ -36,6 +36,7 @@ def view_item(item_id):
 def update_item(item_id):
     item = Items.query.get_or_404(item_id)  # Get post with this id or get 404 meaning page does not exist
     form = ItemForm()
+
     if form.validate_on_submit():
         item.name = form.name.data
         item.manufacturer = form.manufacturer.data
@@ -43,7 +44,7 @@ def update_item(item_id):
         item.summary = form.summary.data
         db.session.commit()
         flash('Item information has been updated!', 'success')
-        return redirect(url_for('item', item_id=item.id))
+        return redirect(url_for('routes.view_item', item_id=item.id))
 
     elif request.method == 'GET':
         form.name.data = item.name
@@ -52,3 +53,12 @@ def update_item(item_id):
         form.summary.data = item.summary
 
     return render_template('item_form.html', form=form, legend='Update Item Form')
+
+
+@routes.route('/delete/<int:item_id>', methods=['GET'])
+def delete_item(item_id):
+    item = Items.query.get_or_404(item_id)  # Get post with this id or get 404 meaning page does not exist
+    db.session.delete(item)
+    db.session.commit()
+    flash('Item has been deleted!', 'danger')
+    return redirect(url_for('routes.home'))

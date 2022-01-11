@@ -9,7 +9,7 @@
             <figure class="form-image">
                 <img src="/static/item_images/default.jpg" alt="This is an image">
             </figure>
-            <a class="form-button" href=""> Delete </a>
+            <a class="form-button" href="{{ url_for('routes.delete_item', item_id=item.id) }}"> Delete </a>
             <a class="form-button" href="{{ url_for('routes.update_item', item_id=item.id) }}"> Update </a>
         </div>
         <div>
