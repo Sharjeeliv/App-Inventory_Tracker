@@ -9,12 +9,3 @@ main = Blueprint("main", __name__)
 def home():
     inventory = Items.query.all()
     return render_template('homepage.html', inventory=inventory)
-
-
-
-
-
-
-
-
-
