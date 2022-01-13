@@ -24,3 +24,7 @@ python instead of python3. Similarly if you have both versions use pip3 in the c
 4. Activate the virtual environment: **source ./venv/bin/activate**
 5. Install all the dependencies from the provided requirments.txt: **pip3 install -r ./requirements.txt**
 6. The program can be launched locally with the following command: **python3 app.py**
+
+## About The Website
+
+This website uses the Flask framework for the backend implementation. The frontend is using the boostrap framework along with some custom CSS and HTML (utilized jinja2 which is the template engine for python. The data is all handled by SQLAlchemy (an ORM, the data is interacted with as a class) for flask which adds simple integration of a database to the website. The database used is SQLITE since it is bundled with python. For form functionality and validation WTForms was used. Pillows is a python library used for image operations.
