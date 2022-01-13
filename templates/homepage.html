@@ -1,33 +1,46 @@
-{% extends "sidebar.html" %}
-
+{% extends 'base.html' %}
 <!-- In the head of the HTML file-->
 {% block title %} Home {% endblock %}
 
-{% block body %}
-    <div style="overflow: hidden;" class="container-fluid">
-        {% if not inventory %}
-            <article class="article-section">
-                <div class="article-content">
-                    <p>No items in inventory</p>
-                </div>
-            </article>
+{% block content %}
+    <section class="wrapper-home">
+        <!-- Sidebar -->
+        <nav><a class="nav-link text-center" href="{{ url_for('routes.new_item') }}">New Item</a></nav>
 
-        {% else %}
-            {% for item in inventory %}
+        <!-- Main Page Content (Item List) -->
+        <section class="item-list"> <!-- Grid box layer -->
+            <section class="container-fluid p-0"> <!-- Flex box layer -->
 
-                <article class="article-section">
-                    <figure class="article-image">
-                        <img src="{{ url_for( 'static', filename = 'item_images/' + item.image) }}"
-                             alt="This is an image">
-                    </figure>
-                    <div class="article-content">
-                        <h2><a class="article-title" href="{{ url_for('routes.view_item', item_id=item.id) }}">{{ item.name }}</a></h2>
-                        <p class="article-metadata">Manufacturer: {{ item.manufacturer }}</p>
-                        <p class="article-metadata">Quantity: {{ item.quantity }}</p>
-                        <p class="article-text">Summary: {{ item.summary }}</p>
-                    </div>
-                </article>
-            {% endfor %}
-        {% endif %}
-    </div>
+                {% if not inventory %}
+                    <article class="item-article empty"><p>No items in inventory</p></article>
+
+                {% else %}
+                    {% for item in inventory %}
+
+                        <article class="item-article">
+                            <img src="{{ url_for( 'static', filename = 'item_images/' + item.image) }}"
+                                 alt="This is an image">
+
+                            <div class="primary-content">
+                                <h4><a href="{{ url_for('routes.view_item', item_id=item.id) }}">
+                                    {{ item.manufacturer }} - {{ item.name }}</a></h4>
+                                <p>Summary: {{ item.summary }}</p>
+                            </div>
+                            <div class="secondary-content">
+                                <p>Quantity:</p>
+                                <p>Retail Price:</p>
+                                <p>Unit Price:</p>
+                            </div>
+                            <div class="tertiary-content">
+                                <p>{{ item.quantity }}</p>
+                                <p>{{ item.retail_price }}</p>
+                                <p>{{ item.unit_price }}</p>
+                            </div>
+                        </article>
+
+                    {% endfor %}
+                {% endif %}
+            </section>
+        </section>
+    </section>
 {% endblock %}

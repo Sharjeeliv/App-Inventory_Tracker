@@ -21,7 +21,8 @@ def new_item():
     form = ItemForm()
     if form.validate_on_submit():
         item = Items(name=form.name.data, manufacturer=form.manufacturer.data, quantity=form.quantity.data,
-                     summary=form.summary.data)
+                     summary=form.summary.data, category=form.category.data, unit_price=form.unit_price.data,
+                     retail_price=form.retail_price.data, description=form.description.data)
 
         if form.image.data:
             picture_file = save_image(form.image.data)
@@ -32,7 +33,8 @@ def new_item():
         db.session.commit()
         flash(f'Item entry for {form.name.data} created!', 'success')
         return redirect(url_for('routes.home'))
-    return render_template('item_form.html', form=form, legend='New Item Form')
+    return render_template('item_form.html', form=form, legend='New Item Form',
+                           image=url_for('static', filename='item_images/default.jpg'))
 
 
 @routes.route('/item/<int:item_id>', methods=['GET', 'POST'])
@@ -77,6 +79,11 @@ def update_item(item_id):
         item.manufacturer = form.manufacturer.data
         item.quantity = form.quantity.data
         item.summary = form.summary.data
+        item.category = form.category.data
+        item.unit_price = form.unit_price.data
+        item.retail_price = form.retail_price.data
+        item.description = form.description.data
+
         db.session.commit()
         flash('Item information has been updated!', 'success')
         return redirect(url_for('routes.view_item', item_id=item.id))
@@ -86,6 +93,10 @@ def update_item(item_id):
         form.manufacturer.data = item.manufacturer
         form.quantity.data = item.quantity
         form.summary.data = item.summary
+        form.category.data = item.category
+        form.unit_price.data = item.unit_price
+        form.retail_price.data = item.retail_price
+        form.description.data = item.description
 
     return render_template('item_form.html', form=form, legend='Update Item Form', image=image)
 
@@ -93,6 +104,7 @@ def update_item(item_id):
 @routes.route('/delete/<int:item_id>', methods=['GET'])
 def delete_item(item_id):
     item = Items.query.get_or_404(item_id)  # Get post with this id or get 404 meaning page does not exist
+    delete_image(item.image)
     db.session.delete(item)
     db.session.commit()
     flash('Item has been deleted!', 'danger')
