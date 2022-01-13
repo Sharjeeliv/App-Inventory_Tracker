@@ -8,8 +8,8 @@
         <img src="{{ image }}" alt="This is an image">
 
         <div class="buttons">
-            <a href="{{ url_for('routes.delete_item', item_id=item.id) }}"> Delete </a>
-            <a href="{{ url_for('routes.update_item', item_id=item.id) }}"> Update </a>
+            <a href="{{ url_for('inventory.delete_item', item_id=item.id) }}"> Delete </a>
+            <a href="{{ url_for('inventory.update_item', item_id=item.id) }}"> Update </a>
         </div>
 
         <section class="primary">

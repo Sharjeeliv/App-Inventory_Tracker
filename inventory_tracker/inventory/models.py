@@ -1,4 +1,4 @@
-from app import db
+from inventory_tracker import db
 
 
 class Items(db.Model):
