@@ -4,10 +4,15 @@ from wtforms import StringField, IntegerField, SubmitField, TextAreaField, Decim
 from wtforms.validators import DataRequired, Length
 
 
-# When using forms we need to set a secret key.
-# It will protect the application from modifying cookies, cross site requests, forgary attacks
-
 class ItemForm(FlaskForm):
+    """
+    A secret key is required to use several features such as flash. It will protect this application
+    from Cross-Site Request Forgery (CSRF). WTForms is used to create and handle everything regarding
+    forms for this application. It has built in validators and is simple to implement in HTML.
+
+    One item form is used for the creation and updating of item entries in the inventory
+    """
+
     name = StringField('Item Name', validators=[DataRequired(), Length(min=2, max=20)])
     manufacturer = StringField('Manufacturer', validators=[DataRequired()])
     quantity = IntegerField('Quantity', validators=[DataRequired()])

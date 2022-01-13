@@ -85,7 +85,6 @@ h1, h2, h3, h4, h5, h6 {
 
     display: grid;
     grid-template-areas: "image    primary   secondary tertiary";
-    /* 160 is the predefined size for the image*/
     grid-template-columns: minmax(var(--itemwidth), max-content)  minmax(max-content, 1fr)  130px 100px;
     grid-template-rows: var(--itemwidth);
     background: #F0E7D0;

@@ -11,10 +11,11 @@ def create_app(config_class=Config):
 
     db.init_app(app)
 
-    # To avoid circular imports
+    # To avoid circular imports blueprint createion is after app creation
     from inventory_tracker.inventory.routes import inventory
     from inventory_tracker.routes import main
 
+    # Create blueprints to add modularity to the program
     app.register_blueprint(main)
     app.register_blueprint(inventory)
 
