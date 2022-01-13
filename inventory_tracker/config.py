@@ -1,0 +1,4 @@
+class Config:
+    SECRET_KEY = '6ba12202b0c980a1c3d10b3c03482569'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///inventory.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False

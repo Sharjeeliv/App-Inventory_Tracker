@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+<!-- In the head of the HTML file-->
+{% block title %} {{ item.manufacturer }} - {{ item.name }} {% endblock %}
+
+{% block content %}
+
+    <div class="item-view">
+        <img src="{{ image }}" alt="This is an image">
+
+        <div class="buttons">
+            <a href="{{ url_for('inventory.delete_item', item_id=item.id) }}"> Delete </a>
+            <a href="{{ url_for('inventory.update_item', item_id=item.id) }}"> Update </a>
+        </div>
+
+        <section class="primary">
+            <h2>  {{ item.name }}</h2>
+            <p>Summary: {{ item.summary }} <br></p>
+            <p>Manufacturer: {{ item.manufacturer }}</p>
+            <p>Category: {{ item.category }}</p>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Retail Price: {{ item.retail_price }}</p>
+            <p>Unit Price: {{ item.unit_price }}</p>
+        </section>
+        <section class="secondary">
+            <p> Description: <br> {{ item.description }}</p>
+        </section>
+    </div>
+{% endblock %}

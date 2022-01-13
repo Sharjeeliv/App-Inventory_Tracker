@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+<!-- In the head of the HTML file-->
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <section class="wrapper-home">
+        <!-- Sidebar -->
+        <nav><a class="nav-link text-center" href="{{ url_for('inventory.new_item') }}">New Item</a></nav>
+
+        <!-- Main Page Content (Item List) -->
+        <section class="item-list"> <!-- Grid box layer -->
+            <section class="container-fluid p-0"> <!-- Flex box layer -->
+
+                {% if not inventory %}
+                    <article class="item-article empty"><p>No items in inventory</p></article>
+
+                {% else %}
+                    {% for item in inventory %}
+
+                        <article class="item-article">
+                            <img src="{{ url_for( 'static', filename = 'item_images/' + item.image) }}"
+                                 alt="This is an image">
+
+                            <div class="primary-content">
+                                <h4><a href="{{ url_for('inventory.view_item', item_id=item.id) }}">
+                                    {{ item.manufacturer }} - {{ item.name }}</a></h4>
+                                <p>Summary: {{ item.summary }}</p>
+                            </div>
+                            <div class="secondary-content">
+                                <p>Quantity:</p>
+                                <p>Retail Price:</p>
+                                <p>Unit Price:</p>
+                            </div>
+                            <div class="tertiary-content">
+                                <p>{{ item.quantity }}</p>
+                                <p>{{ item.retail_price }}</p>
+                                <p>{{ item.unit_price }}</p>
+                            </div>
+                        </article>
+
+                    {% endfor %}
+                {% endif %}
+            </section>
+        </section>
+    </section>
+{% endblock %}
